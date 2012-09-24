@@ -45,7 +45,7 @@ strip : {
 
 You can specify a list of files with the `files` property.
 
-***Warning*** : This *is* a destructive configuration, and you *must* specify `inline:true`
+***Warning*** : This **is** a destructive configuration, and you must specify `inline:true`
 in order for this command to succeed, otherwise it will fail with a warning message.
 
 This is useful in build steps where your entire source tree is copied over (like with the requirejs r.js optimizer).
