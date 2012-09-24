@@ -1,0 +1,43 @@
+{
+  "name": "grunt-strip",
+  "description": "Strip JavaScript nodes (like console.*) out of your source code",
+  "version": "0.1.0",
+  "homepage": "https://github.com/joverson/grunt-strip",
+  "author": {
+    "name": "Jarrod Overson",
+    "email": "jsoverson@gmail.com",
+    "url": "http://jarrodoverson.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joverson/grunt-strip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joverson/grunt-strip/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/joverson/grunt-strip/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "bin": "bin/grunt-strip",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt": "~0.3.15"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0a",
+    "log4js" : "*",
+    "falafel": "0.1.3"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
