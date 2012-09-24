@@ -71,7 +71,8 @@ At some later date that rewrite logic may be important, but the cost vs reward i
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
-_(Nothing yet)_
+
+- 0.1.0 Initial release. Pulled from iog remote logging
 
 ## License
 Copyright (c) 2012 Jarrod Overson  
