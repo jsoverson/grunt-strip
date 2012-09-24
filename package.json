@@ -38,6 +38,11 @@
     "falafel": "0.1.3"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "strip",
+    "console",
+    "rewrite",
+    "esprima",
+    "source"
   ]
 }
