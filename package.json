@@ -1,6 +1,6 @@
 {
   "name": "grunt-strip",
-  "description": "Strip JavaScript nodes (like console.*) out of your source code",
+  "description": "Remove JavaScript statements (like console.log) from your source code",
   "version": "0.1.1",
   "homepage": "https://github.com/joverson/grunt-strip",
   "author": {
