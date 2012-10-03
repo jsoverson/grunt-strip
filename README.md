@@ -72,8 +72,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-
 - 0.1.0 Initial release. Pulled from the [rcl](http://rcljs.com/) project
+
+
 ## License
 Copyright (c) 2012 Jarrod Overson  
 Licensed under the MIT license.
