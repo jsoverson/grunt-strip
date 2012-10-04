@@ -5,6 +5,8 @@ var grunt = require('grunt'),
 exports.stripNodes = function(nodeName, file, dest) {
   "use strict";
 
+  var existsSync = fs.existsSync || require('path').existsSync;
+
   var src = fs.existsSync(file) ? grunt.file.read(file) : file;
 
   var output = falafel(src, function(node){
