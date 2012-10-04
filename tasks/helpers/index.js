@@ -7,7 +7,7 @@ exports.stripNodes = function(nodeName, file, dest) {
 
   var existsSync = fs.existsSync || require('path').existsSync;
 
-  var src = fs.existsSync(file) ? grunt.file.read(file) : file;
+  var src = existsSync(file) ? grunt.file.read(file) : file;
 
   var output = falafel(src, function(node){
     if (
