@@ -72,6 +72,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 0.1.3 Fixed issues on node 0.6 
 - 0.1.0 Initial release. Pulled from the [rcl](http://rcljs.com/) project
 
 
