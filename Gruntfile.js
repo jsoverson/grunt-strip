@@ -4,48 +4,36 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    test: {
+    nodeunit: {
       files: ['test/**/*test.js']
-    },
-    lint: {
-      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
-    },
-    watch: {
-      files: '<config:lint.files>',
-      tasks: 'default'
     },
     strip : {
       main : {
-        //files : 'test/fixtures/src/all_api_methods.built.js',
-        //inline : true,
         src : 'test/fixtures/src/all_api_methods.js',
         dest : 'test/fixtures/src/all_api_methods.built.js',
+        nodes : ['iog','console']
+      },
+      all : {
+        files : ['test/fixtures/foo/**/*.built.js'],
+        inline : true,
         nodes : ['iog','console']
       }
     },
     jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        es5: true
+      options : {
+        jshintrc : './.jshintrc'
       },
-      globals: {}
+      all : ['Gruntfile.js', 'tasks/**/*.js']
     }
   });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Load local tasks.
   grunt.loadTasks('tasks');
 
   // Default task.
-  grunt.registerTask('default', 'lint test');
+  grunt.registerTask('default', ['jshint','nodeunit']);
 
 };

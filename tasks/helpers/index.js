@@ -1,5 +1,4 @@
-var grunt = require('grunt'),
-    falafel = require('falafel'),
+var falafel = require('falafel'),
     fs = require('fs');
 
 exports.stripNodes = function(nodeName, file, dest) {
@@ -7,7 +6,7 @@ exports.stripNodes = function(nodeName, file, dest) {
 
   var existsSync = fs.existsSync || require('path').existsSync;
 
-  var src = existsSync(file) ? grunt.file.read(file) : file;
+  var src = existsSync(file) ? fs.readFileSync(file) : file;
 
   var output = falafel(src, function(node){
     if (
@@ -19,7 +18,7 @@ exports.stripNodes = function(nodeName, file, dest) {
   });
 
   if (dest) {
-    return grunt.file.write(dest, output);
+    return fs.writeFileSync(dest, output);
   } else {
     return output.toString();
   }
