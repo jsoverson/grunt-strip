@@ -7,16 +7,29 @@ module.exports = function(grunt) {
     nodeunit: {
       files: ['test/**/*test.js']
     },
+    clean : {
+      tmp : ['tmp']
+    },
+    copy: {
+      all : {
+        files: [
+          {expand: true, src: ['**'], dest: 'tmp/inline/', cwd: 'test/fixtures/'}
+        ]
+      }
+    },
     strip : {
-      main : {
-        src : 'test/fixtures/src/all_api_methods.js',
-        dest : 'test/fixtures/src/all_api_methods.built.js',
+      options : {
         nodes : ['iog','console']
       },
-      all : {
-        files : ['test/fixtures/foo/**/*.built.js'],
-        inline : true,
-        nodes : ['iog','console']
+      all_api_methods : {
+        src : 'test/fixtures/all_api_methods.js',
+        dest : 'tmp/all_api_methods.js'
+      },
+      inline : {
+        src : ['tmp/inline/*.js'],
+        options : {
+          inline : true
+        }
       }
     },
     jshint: {
@@ -28,12 +41,14 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Load local tasks.
   grunt.loadTasks('tasks');
 
   // Default task.
-  grunt.registerTask('default', ['jshint','nodeunit']);
+  grunt.registerTask('default', ['jshint','clean','copy','strip','nodeunit']);
 
 };

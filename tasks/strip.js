@@ -15,29 +15,33 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('strip', 'Strip console and iog logging messages', function() {
     var nodes = ['console'];
 
-    if (this.data.nodes) {
-      nodes = this.data.nodes instanceof Array  ? this.data.nodes : [this.data.nodes];
-    }
+    var options = this.options();
 
-    if (this.data.files) {
-      if (!this.data.inline) {
-        grunt.log.error('WARNING : POTENTIAL CODE LOSS.'.yellow);
-        grunt.log.error('You must specify "inline : true" when using the "files" configuration.');
-        grunt.log.errorlns(
-          'This WILL REWRITE FILES WITHOUT MAKING BACKUPS. Make sure your ' +
-            'code is checked in or you are configured to operate on a copied directory.'
-        );
-        return;
-      }
-      var files = grunt.file.expandFiles(this.data.files);
-      files.forEach(function(file) {
-        stripSource(file,file,nodes);
-      });
-    } else {
-      var file = this.file.src,
-        dest = this.file.dest;
-      stripSource(file,dest,nodes);
+    if (options.nodes) {
+      nodes = options.nodes instanceof Array  ? options.nodes : [options.nodes];
     }
+    console.log(this, this.files[0].src);
+
+    this.files.forEach(function(fileObj){
+      if (!fileObj.dest) {
+        if (!options.inline) {
+          grunt.log.error('WARNING : POTENTIAL CODE LOSS.'.yellow);
+          grunt.log.error('You must specify "inline : true" when using the "files" configuration.');
+          grunt.log.errorlns(
+            'This WILL REWRITE FILES WITHOUT MAKING BACKUPS. Make sure your ' +
+              'code is checked in or you are configured to operate on a copied directory.'
+          );
+          return;
+        }
+        fileObj.src.forEach(function(file) {
+          stripSource(file,file,nodes);
+        });
+      } else {
+        var file = fileObj.src[0],
+          dest = fileObj.dest;
+        stripSource(file,dest,nodes);
+      }
+    });
   });
 
   function stripSource(file,dest, nodes) {

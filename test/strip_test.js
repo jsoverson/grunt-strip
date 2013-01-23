@@ -60,22 +60,63 @@ exports['strip-logging'] = {
     // setup here
     done();
   },
+  inline : function(test) {
+
+    var actualDir = 'tmp/inline/',
+      expectedDir = 'test/expected/';
+
+    var files = [
+      'all_api_methods.js',
+      'basic.js',
+      'nodes_in_blocks.js',
+      'other_object.js',
+    ];
+
+    test.expect(files.length);
+
+    files.forEach(function(file){
+      var actual = grunt.file.read(actualDir + file);
+      var expected = grunt.file.read(expectedDir + file);
+      test.equals(actual,expected, file + " should be the same");
+    });
+
+    test.done();
+  },
+  single : function(test) {
+
+    var actualDir = 'tmp/',
+        expectedDir = 'test/expected/';
+
+    var files = [
+      'all_api_methods.js',
+    ];
+
+    test.expect(files.length);
+
+    files.forEach(function(file){
+      var actual = grunt.file.read(actualDir + file);
+      var expected = grunt.file.read(expectedDir + file);
+      test.equals(actual,expected, file + " should be the same");
+    });
+
+    test.done();
+  },
   'helper': function(test) {
     var file;
-    //    test.expect(2);
-    file = 'test/fixtures/src/basic.js';
+    test.expect(4 * 2);
+    file = 'test/fixtures/basic.js';
     test.throws(run(read(file)),LoggingError,'Original should throw error');
     test.doesNotThrow(run(helpers.stripNodes(apiName,read(file))), 'Stripped should not throw error');
 
-    file = 'test/fixtures/src/other_object.js';
+    file = 'test/fixtures/other_object.js';
     test.throws(run(read(file)),LoggingError,'Original should throw error');
     test.doesNotThrow(run(helpers.stripNodes(apiName,read(file))), 'Stripped should not throw error');
 
-    file = 'test/fixtures/src/all_api_methods.js';
+    file = 'test/fixtures/all_api_methods.js';
     test.throws(run(read(file)),LoggingError,'Original should throw error');
     test.doesNotThrow(run(helpers.stripNodes(apiName,read(file))), 'Stripped should not throw error');
 
-    file = 'test/fixtures/src/nodes_in_blocks.js';
+    file = 'test/fixtures/nodes_in_blocks.js';
     test.throws(run(read(file)),LoggingError,'Original should throw error');
     test.doesNotThrow(run(helpers.stripNodes(apiName,read(file))), 'Stripped should not throw error');
 
