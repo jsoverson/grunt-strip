@@ -20,7 +20,6 @@ module.exports = function(grunt) {
     if (options.nodes) {
       nodes = options.nodes instanceof Array  ? options.nodes : [options.nodes];
     }
-    console.log(this, this.files[0].src);
 
     this.files.forEach(function(fileObj){
       if (!fileObj.dest) {
