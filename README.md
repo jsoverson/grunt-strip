@@ -36,16 +36,18 @@ strip : {
   main : {
     src : 'src/main.js',
     dest : 'src/main.built.js',
-    nodes : ['console','debug']
+    options : {
+      nodes : ['console','debug']
+    }
   }
 }
 ```
 
 ### Bulk inline rewrites
 
-You can specify a list of files with the `files` property.
+You can specify a list of files to edit inline by omitting the `dest` configuration.
 
-***Warning*** : This **is** a destructive configuration, and you must specify `inline:true`
+***Warning*** : This **is** a destructive configuration, and you must specify the option `inline:true`
 in order for this command to succeed, otherwise it will fail with a warning message.
 
 This is useful in build steps where your entire source tree is copied over (like with the requirejs r.js optimizer).
@@ -53,9 +55,10 @@ This is useful in build steps where your entire source tree is copied over (like
 ```
 strip : {
   main : {
-    files : 'build/**/*.js',
-    inline : true,
-    nodes : ['console']
+    src : 'build/**/*.js',
+    options : {
+      inline : true
+    }
   }
 }
 ```
@@ -72,7 +75,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-- 0.1.3 Fixed issues on node 0.6 
+- 0.2.0rc7 Updated for grunt 0.4.0rc7
+- 0.1.3 Fixed issues on node 0.6
 - 0.1.0 Initial release. Pulled from the [rcl](http://rcljs.com/) project
 
 
