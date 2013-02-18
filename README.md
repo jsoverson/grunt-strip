@@ -24,7 +24,7 @@ The most basic configuration will strip out all calls to 'console.*'
 strip : {
   main : {
     src : 'src/main.js',
-    dest : 'src/main.built.js',
+    dest : 'src/main.built.js'
   }
 }
 ```
