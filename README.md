@@ -75,6 +75,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 0.2.0 Updated for grunt 0.4.0 final
 - 0.2.0rc7 Updated for grunt 0.4.0rc7
 - 0.1.3 Fixed issues on node 0.6
 - 0.1.0 Initial release. Pulled from the [rcl](http://rcljs.com/) project
