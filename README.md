@@ -37,11 +37,13 @@ strip : {
     src : 'src/main.js',
     dest : 'src/main.built.js',
     options : {
-      nodes : ['console','debug']
+      nodes : ['console.log', 'debug']
     }
   }
 }
 ```
+
+*Note:* grunt-strip does not currently support node specificity beyond one property level (i.e. trying to strip 'foo.bar.baz' will not work as expected).
 
 ### Bulk inline rewrites
 
@@ -75,6 +77,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 0.2.1 Added ability to filter on property values
 - 0.2.0 Updated for grunt 0.4.0 final
 - 0.2.0rc7 Updated for grunt 0.4.0rc7
 - 0.1.3 Fixed issues on node 0.6
