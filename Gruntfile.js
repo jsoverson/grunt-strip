@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     },
     strip : {
       options : {
-        nodes : ['iog','console']
+        nodes : ['iog', 'console.log']
       },
       all_api_methods : {
         src : 'test/fixtures/all_api_methods.js',

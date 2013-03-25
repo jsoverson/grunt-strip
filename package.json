@@ -1,7 +1,7 @@
 {
   "name": "grunt-strip",
   "description": "Remove JavaScript statements (like console.log) from your source code",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/jsoverson/grunt-strip",
   "author": {
     "name": "Jarrod Overson",
